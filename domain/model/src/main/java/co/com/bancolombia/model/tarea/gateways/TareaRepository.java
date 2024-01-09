@@ -5,5 +5,5 @@ import co.com.bancolombia.model.tarea.Tarea;
 import java.util.List;
 
 public interface TareaRepository {
-    public List<Tarea> getTareas();
+    List<Tarea> getTareas();
 }

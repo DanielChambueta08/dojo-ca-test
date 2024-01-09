@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   application:
     name: "DojoImperativeCA"
@@ -17,7 +17,7 @@ spring:
     password: "bancolombia123"
     driverClassName: "org.postgresql.Driver"
   jpa:
-    databasePlatform: "org.hibernate.dialect.PostgreSQL9Dialect"
+    databasePlatform: "org.hibernate.dialect.PostgreSQLDialect"
 management:
   endpoints:
     web:
