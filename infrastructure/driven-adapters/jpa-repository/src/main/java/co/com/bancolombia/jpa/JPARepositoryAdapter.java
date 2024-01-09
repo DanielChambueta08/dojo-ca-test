@@ -1,20 +1,24 @@
 package co.com.bancolombia.jpa;
 
 import co.com.bancolombia.jpa.helper.AdapterOperations;
+import co.com.bancolombia.jpa.tarea.TareaDTO;
+import co.com.bancolombia.model.tarea.Tarea;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public class JPARepositoryAdapter extends AdapterOperations<Object/* change for domain model */, Object/* change for adapter model */, String, JPARepository>
+public class JPARepositoryAdapter extends AdapterOperations<Tarea, TareaDTO, String, JPARepository>
 // implements ModelRepository from domain
 {
 
     public JPARepositoryAdapter(JPARepository repository, ObjectMapper mapper) {
-        /**
-         *  Could be use mapper.mapBuilder if your domain model implement builder pattern
-         *  super(repository, mapper, d -> mapper.mapBuilder(d,ObjectModel.ObjectModelBuilder.class).build());
-         *  Or using mapper.map with the class of the object model
-         */
-        super(repository, mapper, d -> mapper.map(d, Object.class/* change for domain model */));
+        super(repository, mapper, d -> mapper.map(d, Tarea.class));
+    }
+
+    @Override
+    public List<Tarea> getTareas() {
+        return super.findAll();
     }
 }

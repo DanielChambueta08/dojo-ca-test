@@ -1,5 +1,6 @@
 package co.com.bancolombia.jpa.helper;
 
+import co.com.bancolombia.model.tarea.Tarea;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.data.domain.Example;
 import org.springframework.data.repository.CrudRepository;
@@ -68,4 +69,6 @@ public abstract class AdapterOperations<E, D, I, R extends CrudRepository<D, I> 
     public List<E> findAll(){
         return toList(repository.findAll());
     }
+
+    public abstract List<Tarea> getTareas();
 }
