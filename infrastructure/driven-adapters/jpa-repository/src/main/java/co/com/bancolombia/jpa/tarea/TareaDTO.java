@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "account")
+@Table(name = "tarea")
 public class TareaDTO {
     @Id
     private Long id;
