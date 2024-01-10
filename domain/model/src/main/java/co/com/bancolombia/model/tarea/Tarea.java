@@ -13,4 +13,7 @@ public class Tarea {
     private String titulo;
     private String descripcion;
     private String estado;
+    public static Tarea newTarea(Long id, String titulo, String descripcion, String estado) {
+        return new Tarea(id, titulo, descripcion, estado);
+    }
 }

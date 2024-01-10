@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TareaRepository {
     List<Tarea> getTareas();
+    void crearTarea(Tarea tarea);
+//    void deleteTarea(long id);
 }

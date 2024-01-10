@@ -22,4 +22,11 @@ implements TareaRepository
     public List<Tarea> getTareas() {
         return super.findAll();
     }
+
+    //El error sale porque espera un objeto tipo tarea y recibe un arreglo con id, nombre, titulo, estado
+    @Override
+    public void crearTarea(Tarea tarea) {
+        super.save(tarea);
+    }
+
 }
