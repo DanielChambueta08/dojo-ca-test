@@ -72,4 +72,8 @@ public abstract class AdapterOperations<E, D, I, R extends CrudRepository<D, I> 
 
     public abstract List<Tarea> getTareas();
 
+    protected boolean deleteById(I s) {
+        repository.deleteById(s);
+        return true;
+    }
 }

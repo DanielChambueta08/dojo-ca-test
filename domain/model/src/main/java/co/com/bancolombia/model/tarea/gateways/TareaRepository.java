@@ -9,5 +9,5 @@ public interface TareaRepository {
 
     Tarea getTareaById(long id);
     void crearTarea(Tarea tarea);
-//    void deleteTarea(long id);
+    boolean eliminarTarea(long id);
 }
