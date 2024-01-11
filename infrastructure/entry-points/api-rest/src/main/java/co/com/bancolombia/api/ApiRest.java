@@ -11,9 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -51,7 +49,13 @@ public class ApiRest {
     @PostMapping(path = "/create")
     public ResponseEntity<Tarea> crearTarea(@RequestBody Tarea newTarea) {
         Tarea tareaCreada = crearTareaUseCase.crearTarea(newTarea);
-        return new ResponseEntity<Tarea>(tareaCreada, new HttpHeaders(), HttpStatus.CREATED);
+        if (tareaCreada == null) {
+            System.out.println("Tarea ya existe");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }else{
+            System.out.println("Tarea creada con éxito");
+            return new ResponseEntity<Tarea>(tareaCreada, new HttpHeaders(), HttpStatus.CREATED);
+        }
     }
 
     @DeleteMapping(path = "/delete/{id}")

@@ -8,7 +8,12 @@ public class CrearTareaUseCase {
     private final TareaRepository tareaRepository;
 
     public Tarea crearTarea(Tarea tarea) {
-        tareaRepository.crearTarea(tarea);
-        return tarea;
+        Tarea tareaById = tareaRepository.getTareaById(tarea.getId());
+        if (tareaById == null) {
+            tareaRepository.crearTarea(tarea);
+            return tarea;
+        } else {
+            return null;
+        }
     }
 }
