@@ -1,6 +1,7 @@
 package co.com.bancolombia.api;
 import co.com.bancolombia.model.tarea.Tarea;
 import co.com.bancolombia.usecase.creartarea.CrearTareaUseCase;
+import co.com.bancolombia.usecase.listartareaporid.ListarTareaPorIdUseCase;
 import co.com.bancolombia.usecase.listartareas.ListarTareasUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ApiRest {
     private final ListarTareasUseCase listarTareasUseCase;
     private final CrearTareaUseCase crearTareaUseCase;
+    private final ListarTareaPorIdUseCase listarTareaPorIdUseCase;
 
 
     @GetMapping(path = "/path")
@@ -28,6 +30,16 @@ public class ApiRest {
     public ResponseEntity<List<Tarea>> getTareas() {
         return new ResponseEntity<List<Tarea>>(
                 listarTareasUseCase.getTareas(), new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/list/{id}")
+    public ResponseEntity<Tarea> getTareaById(@PathVariable("id") long id) {
+        Tarea tarea = listarTareaPorIdUseCase.listarTareaPorId(id);
+        if (tarea != null) {
+            return new ResponseEntity<>(tarea, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping(path = "/create")
